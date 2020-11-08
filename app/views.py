@@ -1,7 +1,10 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from .models import Producto
-from .forms import ContactoForm, ProductoForm
+from .forms import ContactoForm, ProductoForm, RegistrarFrom
 from django.contrib import messages
+from django.core.paginator import Paginator
+from django.http import Http404
+from django.contrib.auth import authenticate, login
 
 # Create your views here.
 def home(request):
@@ -46,10 +49,18 @@ def agregar_producto(request):
 
 def listar_productos(request):
     productos = Producto.objects.all()
+    page = request.GET.get('page', 1)
 
+    try:
+        paginator = Paginator(productos, 2)
+        productos = paginator.page(page)
+    except:
+        raise Http404
     data ={
 
-        'productos': productos
+        'entity': productos,
+        'paginator': paginator
+
     }
     return render(request, 'app/producto/listar.html', data)
 
@@ -77,3 +88,19 @@ def eliminar_producto(request, id):
     producto.delete()
     messages.success(request, "Producto eliminado correctamente")
     return redirect(to="listar_productos")
+
+def registro(request):
+
+    data = {
+        'form': RegistrarFrom()
+    }
+    if request.method == 'POST':
+        formulario = RegistrarFrom(data=request.POST)
+        if formulario.is_valid():
+            formulario.save()
+            user = authenticate(username=formulario.cleaned_data["username"], password=formulario.cleaned_data["password1"])
+            login(request, user)
+            messages.success(request, "Te has registrado correctamente")
+            return redirect(to="home")
+        data["form"] = formulario
+    return render(request, 'registration/registro.html', data)

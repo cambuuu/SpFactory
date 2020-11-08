@@ -42,6 +42,22 @@
                     <li>
                         <a href="{% url 'agregar_producto' %}">Agregar Producto</a>
                     </li>
+                    {% if user.is_authenticated %}
+                        <li>
+                            <a href="{% url 'logout' %}" class ="btn btn-danger btn-sm">Cerrar Sesion</a>
+                        </li>
+                        <li>
+                            <a href="#" class= "disabled" aria-disabled="true">Bienvenido, {{  user.username | capfirst}}</a>
+                        </li>
+                    {% else %}
+                        <li>
+                            <a href="{% url 'login' %}" class="btn btn-primary btn-sm">Iniciar Sesion</a>
+                        </li>
+                        <li>
+                            <a href="{% url 'registro' %}">Registrarse</a>
+                        </li>
+                    
+                    {%  endif %}
                 </ul>
             </nav>
 
