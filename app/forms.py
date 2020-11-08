@@ -7,15 +7,12 @@ class ContactoForm(forms.ModelForm):
         model = Contacto
         fields = '__all__'
 
-class DateInput(forms.DateInput):
-    input_type = 'date'
-
 class ProductoForm(forms.ModelForm):
 
     class Meta:
         model = Producto
         fields = '__all__'
         widgets = {
-            'fecha_producto': DateInput()
+            'fecha_producto': forms.SelectDateWidget()
 
         }
