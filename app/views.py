@@ -5,6 +5,7 @@ from django.contrib import messages
 from django.core.paginator import Paginator
 from django.http import Http404
 from django.contrib.auth import authenticate, login
+from django.contrib.auth.decorators import permission_required
 
 # Create your views here.
 def home(request):
@@ -30,6 +31,7 @@ def contacto(request):
 def galeria (request):
     return render(request,'app/galeria.html')
 
+@permission_required('app.add_producto')
 def agregar_producto(request):
 
     data = {
@@ -47,6 +49,7 @@ def agregar_producto(request):
 
     return render(request, 'app/producto/agregar.html', data)
 
+@permission_required('app.view_producto')
 def listar_productos(request):
     productos = Producto.objects.all()
     page = request.GET.get('page', 1)
@@ -64,7 +67,7 @@ def listar_productos(request):
     }
     return render(request, 'app/producto/listar.html', data)
 
-
+@permission_required('app.change_producto')
 def modificar_producto(request, id):
 
     producto = get_object_or_404(Producto, id=id)
@@ -83,6 +86,7 @@ def modificar_producto(request, id):
 
     return render(request, 'app/producto/modificar.html', data)
 
+@permission_required('app.delete_producto')
 def eliminar_producto(request, id):
     producto= get_object_or_404(Producto, id=id)
     producto.delete()
