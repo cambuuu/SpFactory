@@ -3,7 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% block title %}
     <title>SpFactory</title>
+    {% endblock %}
     <link href="https://fonts.googleapis.com/css2?family=Balsamiq+Sans:ital,wght@0,700;1,400;1,700&family=Open+Sans:ital,wght@0,400;0,700;1,600&display=swap" rel="stylesheet">
 
     {% load static %}
@@ -35,7 +37,7 @@
                     <li>
                         <a href="{% url 'contacto' %}">Contacto</a>
                     </li>
-                    <li><a href="{% url 'galeria' %}">Galería</a></li>
+                    <li><a href="{% url 'galeria' %}">Productos</a></li>
                     {% if perms.app.view_producto %}
                     <li>
                         <a href="{% url 'listar_productos' %}">Listar Productos</a>
@@ -71,16 +73,10 @@
 
     <div id="contenido">
 
-
-
         {% block contenido %}
 
         {% endblock %}
-
-
     </div>
-
-
     <footer>
         <div class="logo_footer">
             <img src="{% static 'app/img/logospfactory.png' %}" alt="logo">
@@ -88,8 +84,6 @@
     </footer>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-
-    <script src="{% static 'app/js/menu.js' %}"></script>
 
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 

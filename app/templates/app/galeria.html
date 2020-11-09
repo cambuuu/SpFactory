@@ -1,5 +1,10 @@
 {% extends 'app/base.html' %}
 
+
+{% block title %}
+    <title>Productos</title>
+
+{% endblock %}
 {% load static %}
 {% block js %}
 
@@ -15,15 +20,26 @@
 
 {% block contenido %}
 
-    <h2>Galería de nuestra tienda</h2>
+    <br>
+    <h2>Galeria de productos</h2>
            <br><br>
-           <div class="galeria">
-                <a data-fancybox="gallery" href="{% static 'app/img/tienda/tienda1.jpg' %}"><img src="{% static 'app/img/tienda/tienda1.jpg' %}"></a>
-                <a data-fancybox="gallery" href="{% static 'app/img/tienda/tienda2.jpeg' %}"><img src="{% static 'app/img/tienda/tienda2.jpeg' %}"></a>
-                <a data-fancybox="gallery" href="{% static 'app/img/tienda/tienda3.jpg' %}"><img src="{% static 'app/img/tienda/tienda3.jpg' %}"></a>
-                <a data-fancybox="gallery" href="{% static 'app/img/tienda/tienda4.jpg' %}"><img src="{% static 'app/img/tienda/tienda4.jpg' %}"></a>
-                <a data-fancybox="gallery" href="{% static 'app/img/tienda/tienda5.jpg' %}"><img src="{% static 'app/img/tienda/tienda5.jpg' %}"></a>
+           <div class="tproductos">
+               <a data-fancybox="gallery" href="{% static 'app/img/productos/1.jpg' %}">ASUS TUF<img src="{% static 'app/img/productos/1.jpg' %}"></a>
+               <a data-fancybox="gallery" href="{% static 'app/img/productos/2.jpg' %}">HP PAVILION<img src="{% static 'app/img/productos/2.jpg' %}"></a>
+               <a data-fancybox="gallery" href="{% static 'app/img/productos/3.jpg' %}">ACER PREDATOR<img src="{% static 'app/img/productos/3.jpg' %}"></a>
+               <a data-fancybox="gallery" href="{% static 'app/img/productos/4.jpg' %}">ASUS ROG<img src="{% static 'app/img/productos/4.jpg' %}"></a>
+               <a data-fancybox="gallery" href="{% static 'app/img/productos/5.jpg' %}">LENOVO LEGION<img src="{% static 'app/img/productos/5.jpg' %}"></a>
+               <a data-fancybox="gallery" href="{% static 'app/img/productos/6.jpg' %}">MACBOOK PRO<img src="{% static 'app/img/productos/6.jpg' %}"></a>
+               <a data-fancybox="gallery" href="{% static 'app/img/productos/7.jpg' %}">MSI GF65<img src="{% static 'app/img/productos/7.jpg' %}"></a>
+               <a data-fancybox="gallery" href="{% static 'app/img/productos/8.jpg' %}">HP OMEN<img src="{% static 'app/img/productos/8.jpg' %}"></a>
+               <a data-fancybox="gallery" href="{% static 'app/img/productos/9.jpg' %}">ASUS VIVOBOOK<img src="{% static 'app/img/productos/9.jpg' %}"></a>
+               <a data-fancybox="gallery" href="{% static 'app/img/productos/10.jpg' %}">HP 240<img src="{% static 'app/img/productos/10.jpg' %}"></a>
+               <a data-fancybox="gallery" href="{% static 'app/img/productos/11.jpg' %}">LENOVO IDEAPAD 5<img src="{% static 'app/img/productos/11.jpg' %}"></a>
+               <a data-fancybox="gallery" href="{% static 'app/img/productos/12.jpg' %}">DELL INSPIRON<img src="{% static 'app/img/productos/12.jpg' %}"></a>
+               <a data-fancybox="gallery" href="{% static 'app/img/productos/13.jpg' %}">GEAR IRIS<img src="{% static 'app/img/productos/13.jpg' %}"></a>
+               <a data-fancybox="gallery" href="{% static 'app/img/productos/14.jpg' %}">ACER ASPIRE<img src="{% static 'app/img/productos/14.jpg' %}"></a>
+               <a data-fancybox="gallery" href="{% static 'app/img/productos/15.jpg' %}">LENOVO IDEAPAD S145<img src="{% static 'app/img/productos/15.jpg' %}"></a>
            </div>
-
+    <br>
 
 {%  endblock %}

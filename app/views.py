@@ -23,13 +23,14 @@ def contacto(request):
         formulario = ContactoForm(data=request.POST)
         if formulario.is_valid():
             formulario.save()
-            data["mensaje"] = "Contacto agregado"
+            messages.success(request, "Contacto agregado correctamente")
+            #data["mensaje"] = "Contacto agregado"
         else:
             data["form"] = formulario
     return render(request,'app/contacto.html', data)
 
 def galeria (request):
-    return render(request,'app/galeria.html')
+    return render(request, 'app/galeria.html')
 
 @permission_required('app.add_producto')
 def agregar_producto(request):
@@ -42,7 +43,8 @@ def agregar_producto(request):
         if formulario.is_valid():
             formulario.save()
             messages.success(request, "Producto agregado correctamente")
-            data["mensaje"] = "Producto agregado correctamente"
+            #data["mensaje"] = "Producto agregado correctamente"
+            return redirect(to="listar_productos")
         else:
             messages.ERROR(request,"No se ha podido agregar el producto")
             data["form"] = formulario

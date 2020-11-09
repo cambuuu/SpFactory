@@ -1,5 +1,10 @@
 {% extends 'app/base.html' %}
 
+{% block title %}
+    <title>SpFactory</title>
+
+{% endblock %}
+
 {% load static %}
 
 {% block js %}
@@ -36,7 +41,7 @@
                 </div>
             </div>
     {% load humanize %}
-        <h2>Productos</h2>
+        <h2>Destacados</h2>
 
         <div class="productos">
         {% for p in productos %}
