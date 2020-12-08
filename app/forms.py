@@ -2,6 +2,7 @@ from django import forms
 from .models import Contacto, Producto
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
+
 class ContactoForm(forms.ModelForm):
 
     class Meta:
@@ -14,7 +15,7 @@ class ProductoForm(forms.ModelForm):
         model = Producto
         fields = '__all__'
         widgets = {
-            'fecha_producto': forms.SelectDateWidget()
+            'fecha_producto': forms.SelectDateWidget(years=range(2010, 2021))
 
         }
 

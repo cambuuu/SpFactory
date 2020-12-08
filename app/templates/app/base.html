@@ -15,7 +15,7 @@
 
 
     {% endblock %}
-    <link rel="stylesheet" href="{% static 'app/css/estilo.css' %}">
+    <link rel="stylesheet" href="{% static 'app/css/estilos.css' %}">
 
 </head>
 <body>
@@ -57,10 +57,10 @@
                         </li>
                     {% else %}
                         <li>
-                            <a href="{% url 'login' %}" class="btn btn-primary btn-sm">Iniciar Sesion</a>
+                            <a href="{% url 'login' %}" class="btn btn-success btn-sm">Iniciar Sesion</a>
                         </li>
                         <li>
-                            <a href="{% url 'registro' %}">Registrarse</a>
+                            <a href="{% url 'registro' %}" class="btn btn-info btn-sm">Registrarse</a>
                         </li>
                     
                     {%  endif %}
@@ -86,7 +86,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
-
+<!-- se pone el Swal acá en el base para que se ejecute en todas las templates cuyas views tengan messages-->
     {% if messages %}
         {% for m in messages %}
             <script>
@@ -98,8 +98,6 @@
             </script>
         {% endfor %}
     {% endif %}
-
-
 
 {% block js %}
 
