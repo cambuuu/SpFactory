@@ -25,12 +25,20 @@ SECRET_KEY = 's+%o6ozq-9tt0--!g2se@u*37hliuo^7+1-uf=ne^q8+#n_e-h'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["*"]
 
 MESSAGE_STORAGE = "django.contrib.messages.storage.cookie.CookieStorage"
 
 LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL = '/'
+
+SOCIAL_AUTH_FACEBOOK_KEY = "3768527263208103"
+SOCIAL_AUTH_FACEBOOK_SECRET = "edb51ece8cfedea8dd158ff62868263f"
+
+
+SOCIAL_AUTH_RAISE_EXCEPTIONS = False
+LOGIN_ERROR_URL = 'home'
+
 
 # Application definition
 
@@ -47,6 +55,7 @@ INSTALLED_APPS = [
     'django.contrib.humanize',
     'crispy_forms',
     'rest_framework',
+    'social_django',
 
 ]
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
@@ -76,9 +85,25 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'social_django.context_processors.backends',
+                'social_django.context_processors.login_redirect',
             ],
         },
     },
+]
+
+SOCIAL_AUTH_FACEBOOK_SCOPE = ['email', 'user_link']
+
+SOCIAL_AUTH_FACEBOOK_PROFILE_EXTRA_PARAMS = {
+  'fields': 'id, name, email, picture.type(large), link'
+}
+
+
+SOCIAL_AUTH_FACEBOOK_EXTRA_DATA = [
+    ('name', 'name'),
+    ('email', 'email'),
+    ('picture', 'picture'),
+    ('link', 'profile_url'),
 ]
 
 WSGI_APPLICATION = 'spfactory.wsgi.application'
@@ -137,3 +162,8 @@ import os
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, "media")
+
+AUTHENTICATION_BACKENDS = [
+    'social_core.backends.facebook.FacebookOAuth2',
+    'django.contrib.auth.backends.ModelBackend',
+]

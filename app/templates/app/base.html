@@ -53,6 +53,14 @@
                             <a href="{% url 'logout' %}" class ="btn btn-danger btn-sm">Cerrar Sesion</a>
                         </li>
                         <li>
+                        {% for auth in backends.associated %}
+                            {% if auth.provider == 'facebook' %}
+                                <img src="{{ auth.extra_data.picture.data.url }}" alt="" width="50" height="50">
+                            {% endif %}
+
+                        {% endfor %}
+                        </li>
+                        <li>
                             <a href="#" class= "disabled" aria-disabled="true">Bienvenido, {{  user.username | capfirst}}</a>
                         </li>
                     {% else %}
