@@ -56,6 +56,7 @@ INSTALLED_APPS = [
     'crispy_forms',
     'rest_framework',
     'social_django',
+    'pwa',
 
 ]
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
@@ -167,3 +168,24 @@ AUTHENTICATION_BACKENDS = [
     'social_core.backends.facebook.FacebookOAuth2',
     'django.contrib.auth.backends.ModelBackend',
 ]
+
+PWA_APP_NAME = "spfactory"
+PWA_APP_DESCRIPTION = "Página de venta de computadores"
+PWA_APP_THEME_COLOR = "#ABEBC6"
+PWA_APP_BACKGROUND_COLOR = "#EBEDEF"
+
+PWA_APP_ICONS = [
+    {
+    "src": "/static/app/img/logo.png",
+    "sizes": "128x128"
+    }
+]
+PWA_APP_ICONS_APPLE = [
+    {
+    "src": "/static/app/img/logo.png",
+    "sizes": "128x128"
+    }
+]
+
+PWA_SERVICE_WORKER_PATH = os.path.join(BASE_DIR, "serviceworker.js")
+
