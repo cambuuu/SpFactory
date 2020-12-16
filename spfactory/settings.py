@@ -37,7 +37,7 @@ SOCIAL_AUTH_FACEBOOK_SECRET = "edb51ece8cfedea8dd158ff62868263f"
 
 
 SOCIAL_AUTH_RAISE_EXCEPTIONS = False
-LOGIN_ERROR_URL = 'home'
+LOGIN_ERROR_URL = ''
 
 
 # Application definition
